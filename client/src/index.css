@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Manrope', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --color-bg: #050505;
+}
+
+:root {
+  --page-background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.06), transparent 38%),
+    linear-gradient(180deg, #080808 0%, #090909 42%, #060606 100%);
+  --page-glow: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.05), transparent 45%);
+  --surface-background: linear-gradient(180deg, rgba(20, 20, 20, 0.95), rgba(15, 15, 15, 0.9));
+  --widget-background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  --surface-border: rgba(255, 255, 255, 0.08);
+  --dock-background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.92);
+  background: #050505;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+html {
+  background: #050505;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  background: #050505;
+  font-family: var(--font-sans);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(99, 212, 255, 0.26);
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 148, 148, 0.55);
+  border-radius: 999px;
+}
+
+.mac-dock-tile {
+  transform: translate3d(0, 0, 0) scale(1);
+  transform-origin: bottom center;
+  transition:
+    transform 0.15s ease-out,
+    box-shadow 0.15s ease-out,
+    border-color 0.15s ease-out;
+  will-change: transform;
+}
+
+.mac-dock-label {
+  opacity: 0;
+  transform: translate3d(-50%, 6px, 0) scale(0.96);
+  transition:
+    opacity 0.12s ease-out,
+    transform 0.12s ease-out;
+  will-change: transform, opacity;
+}
+
+.mac-dock-bounce {
+  animation: mac-dock-bounce 220ms ease-out;
+}
+
+@keyframes mac-dock-bounce {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  38% {
+    transform: translate3d(0, -8px, 0) scale(1.1);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
