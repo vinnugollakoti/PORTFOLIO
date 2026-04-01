@@ -25,6 +25,10 @@ const EFFECT_RADIUS = 150
 const MAX_SCALE = 1.18
 const MIN_SCALE = 1
 const LERP = 0.32
+const BASE_GAP = 10
+const HOVER_GAP_EXPANSION = 10
+const BASE_SIDE_PADDING = 14
+const HOVER_SIDE_PADDING_EXPANSION = 8
 
 export function MacDock({ items }: MacDockProps) {
   const dockRef = useRef<HTMLDivElement | null>(null)
@@ -51,6 +55,7 @@ export function MacDock({ items }: MacDockProps) {
     const dockRect = dockRef.current?.getBoundingClientRect()
     const pointer = pointerRef.current
     let shouldContinue = pointer.active
+    let maxScale = 1
 
     itemRefs.current.forEach((element, index) => {
       if (!element || !dockRect) {
@@ -74,6 +79,7 @@ export function MacDock({ items }: MacDockProps) {
       const current = scalesRef.current[index] ?? 1
       const next = current + (targetScale - current) * LERP
       scalesRef.current[index] = next
+      maxScale = Math.max(maxScale, next)
 
       const lift = (next - 1) * -18
       const iconScale = 1 + (next - 1) * 0.22
@@ -86,9 +92,22 @@ export function MacDock({ items }: MacDockProps) {
       }
     })
 
+    if (dockRef.current) {
+      const hoverProgress = Math.max(0, (maxScale - 1) / (MAX_SCALE - 1))
+      const nextGap = BASE_GAP + hoverProgress * HOVER_GAP_EXPANSION
+      const nextSidePadding = BASE_SIDE_PADDING + hoverProgress * HOVER_SIDE_PADDING_EXPANSION
+      dockRef.current.style.setProperty('--dock-gap', `${nextGap.toFixed(2)}px`)
+      dockRef.current.style.setProperty('--dock-padding-x', `${nextSidePadding.toFixed(2)}px`)
+    }
+
     if (shouldContinue) {
       frameRef.current = requestAnimationFrame(runAnimation)
       return
+    }
+
+    if (dockRef.current) {
+      dockRef.current.style.setProperty('--dock-gap', `${BASE_GAP}px`)
+      dockRef.current.style.setProperty('--dock-padding-x', `${BASE_SIDE_PADDING}px`)
     }
 
     frameRef.current = null
@@ -144,7 +163,7 @@ export function MacDock({ items }: MacDockProps) {
               ) : null}
               <span className="mac-dock-tile">
                 <span className="mac-dock-icon">
-                  <Icon name={item.icon} className="h-[27px] w-[27px]" />
+                  <Icon name={item.icon} className="h-[23px] w-[23px]" />
                 </span>
               </span>
               <span className="mac-dock-indicator" />
