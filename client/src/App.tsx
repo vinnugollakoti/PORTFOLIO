@@ -996,7 +996,7 @@ function App() {
           </div>
         </FloatingWidget>
 
-        {(Object.keys(desktopWindows) as WindowId[]).map((id, index) => {
+        {(Object.keys(desktopWindows) as WindowId[]).map((id) => {
           const config = desktopWindows[id]
           const state = windowState[id]
 
@@ -1013,7 +1013,7 @@ function App() {
               x={state.x}
               y={state.y}
               zIndex={state.z}
-              introDelay={0.18 + index * 0.05}
+              introDelay={0}
               onFocus={() => bringToFront(id)}
               onClose={() => closeWindow(id)}
               onDragEnd={(offsetX, offsetY) => updateWindowPosition(id, offsetX, offsetY)}
