@@ -68,39 +68,121 @@ button {
   border-radius: 999px;
 }
 
+.mac-dock {
+  display: flex;
+  align-items: end;
+  gap: 12px;
+  padding: 14px 18px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(32, 32, 32, 0.74), rgba(18, 18, 18, 0.86)),
+    var(--dock-background);
+  box-shadow:
+    0 22px 60px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(26px) saturate(130%);
+  -webkit-backdrop-filter: blur(26px) saturate(130%);
+}
+
+.mac-dock-item {
+  --dock-scale: 1;
+  --dock-lift: 0px;
+  --dock-icon-scale: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.72);
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+}
+
 .mac-dock-tile {
-  transform: translate3d(0, 0, 0) scale(1);
-  transform-origin: bottom center;
-  transition:
-    transform 0.15s ease-out,
-    box-shadow 0.15s ease-out,
-    border-color 0.15s ease-out;
+  display: flex;
+  height: 64px;
+  width: 64px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.025),
+    inset 0 -14px 24px rgba(0, 0, 0, 0.08);
+  transform: translate3d(0, var(--dock-lift), 0) scale(var(--dock-scale));
+  transform-origin: center bottom;
   will-change: transform;
 }
 
-.mac-dock-label {
+.mac-dock-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(var(--dock-icon-scale));
+  transform-origin: center center;
+  transition: color 120ms ease-out, opacity 120ms ease-out;
+}
+
+.mac-dock-item:hover,
+.mac-dock-item:focus-visible,
+.mac-dock-item.is-active {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.mac-dock-item:focus-visible .mac-dock-tile {
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.mac-dock-indicator {
+  height: 6px;
+  width: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
   opacity: 0;
-  transform: translate3d(-50%, 6px, 0) scale(0.96);
-  transition:
-    opacity 0.12s ease-out,
-    transform 0.12s ease-out;
-  will-change: transform, opacity;
+  transform: translateY(-2px);
+  transition: opacity 120ms ease-out, transform 120ms ease-out;
 }
 
-.mac-dock-bounce {
-  animation: mac-dock-bounce 220ms ease-out;
+.mac-dock-item.is-active .mac-dock-indicator {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-@keyframes mac-dock-bounce {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
+.mac-dock-tooltip {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  z-index: 3;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  background: rgba(37, 37, 37, 0.94);
+  color: rgba(255, 255, 255, 0.9);
+  font-family: var(--font-heading);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  white-space: nowrap;
+  transform: translateX(-50%);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
+  pointer-events: none;
+}
 
-  38% {
-    transform: translate3d(0, -8px, 0) scale(1.1);
-  }
-
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
+.mac-dock-divider {
+  margin: 0 3px 11px 4px;
+  height: 52px;
+  width: 1px;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0)
+  );
 }

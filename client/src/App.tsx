@@ -217,6 +217,31 @@ function App() {
 
   const activeTitle = desktopWindows[activeWindow].label
 
+  const dockItems = [
+    ...internalMenu.map((item) => ({
+      id: item.id,
+      label: desktopWindows[item.id].label,
+      icon: item.icon,
+      active: windowState[item.id].isOpen,
+      onClick: () => bringToFront(item.id),
+    })),
+    {
+      id: 'github-external',
+      label: 'GitHub',
+      icon: 'github',
+      active: false,
+      href: externalLinks.github,
+      dividerBefore: true,
+    },
+    {
+      id: 'twitter-external',
+      label: 'X',
+      icon: 'twitter',
+      active: false,
+      href: externalLinks.twitter,
+    },
+  ]
+
   const calendarMatrix = useMemo(() => {
     const now = new Date()
     const year = now.getFullYear()
@@ -597,36 +622,6 @@ function App() {
     )
   }
 
-  const dockItems = [
-    ...internalMenu.map((item) => ({
-      id: item.id,
-      kind: 'window' as const,
-      label: item.label.toUpperCase(),
-      icon: item.icon,
-      active: windowState[item.id].isOpen,
-      onClick: () => bringToFront(item.id),
-      href: undefined,
-    })),
-    {
-      id: 'github-external',
-      kind: 'link' as const,
-      label: 'GITHUB',
-      icon: 'github',
-      active: false,
-      onClick: undefined,
-      href: externalLinks.github,
-      dividerBefore: true,
-    },
-    {
-      id: 'twitter-external',
-      kind: 'link' as const,
-      label: 'X',
-      icon: 'twitter',
-      active: false,
-      onClick: undefined,
-      href: externalLinks.twitter,
-    },
-  ]
   return (
     <div className="min-h-screen bg-[#090909] text-white">
       <div
