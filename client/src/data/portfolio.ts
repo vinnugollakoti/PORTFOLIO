@@ -114,28 +114,20 @@ export const profileSummary = {
 
 export const experiences = [
   {
-    company: 'ETHGlobal',
-    role: 'Hackathon Participant',
-    period: '3 times',
+    company: '2RK Capital',
+    role: 'DeFi Smart Contract Engineer • Remote',
+    period: 'Recent',
     summary:
-      'Built fast-moving Web3 prototypes, collaborated with builders, and sharpened product instincts in high-intensity hackathon environments.',
-    stack: ['Web3', 'Hackathons', 'Rapid shipping', 'Networking'],
+      'Built Web3 systems around a DeFi protocol on the Sui blockchain, working on smart-contract-driven flows, protocol-facing features, and product experiences that connected onchain logic with usable interfaces.',
+    stack: ['Sui', 'DeFi', 'Smart Contracts', 'Web3 Systems'],
   },
   {
-    company: 'Full Stack Development',
-    role: 'Web2 + Web3 Builder',
-    period: '3+ years',
+    company: 'GeeksforGeeks Students Club, Kalasalingam University',
+    role: 'Web Developer Lead',
+    period: '1 year',
     summary:
-      'Focused on frontend systems, backend APIs, database workflows, and production-ready dApp experiences.',
-    stack: ['React', 'Node.js', 'Prisma', 'PostgreSQL', 'MongoDB', 'Sui'],
-  },
-  {
-    company: 'Sui Ecosystem',
-    role: 'Blockchain Developer',
-    period: 'ongoing',
-    summary:
-      'Exploring smart contracts, blockchain fundamentals, wallet UX, and full stack dApps centered around clean user experience.',
-    stack: ['Sui', 'Smart contracts', 'dApps', 'Wallet UX'],
+      'Led web development efforts for the student club, guiding projects, supporting peers, and helping shape practical frontend work across events, initiatives, and campus-driven builds.',
+    stack: ['Leadership', 'Web Development', 'Frontend', 'Community'],
   },
 ]
 
@@ -149,6 +141,57 @@ export const resumes = [
     label: 'Web3 Resume',
     url: 'https://drive.google.com/file/d/1K94NLhOGxfofASRKV4wPR7HHvBdhAuCE/view',
     description: 'For blockchain, protocol, and dApp-focused opportunities.',
+  },
+]
+
+export const projects = [
+  {
+    name: 'IDPS',
+    meta: 'School ERP System',
+    description:
+      'Full-stack school management platform covering admin workflows, student records, and operational dashboards, built with a PostgreSQL-backed TypeScript stack and linked here through the backend repository.',
+    url: 'https://github.com/vinnugollakoti/IDPS-Backend',
+    stack: ['PostgreSQL', 'TypeScript', 'Node.js', 'Full Stack'],
+  },
+  {
+    name: 'WAY4TRACK',
+    meta: 'Production E-commerce Build',
+    description:
+      'Production-level ecommerce website built for a company, focused on practical shopping flows, polished UI delivery, and a stable real-world product setup.',
+    url: 'https://github.com/vinnugollakoti/WAY4TRACK',
+    stack: ['E-commerce', 'Production', 'Frontend', 'Web App'],
+  },
+  {
+    name: 'AQUADEX',
+    meta: 'Sui DeFi Product',
+    description:
+      'DeFi product work around trading and onchain protocol interactions in the Sui ecosystem, combining Web3 product thinking with usable frontend flows.',
+    url: 'https://github.com/vinnugollakoti/AQUADEX',
+    stack: ['Sui', 'DeFi', 'Web3', 'Frontend'],
+  },
+  {
+    name: 'AquaLend',
+    meta: 'Sui Lending Product',
+    description:
+      'Lending-focused Sui project built around protocol interactions, product usability, and onchain financial flows.',
+    url: 'https://github.com/vinnugollakoti/AquaLend',
+    stack: ['Sui', 'Lending', 'Smart Contracts', 'Web3'],
+  },
+  {
+    name: 'AquaIndex',
+    meta: 'Sui Indexing Product',
+    description:
+      'Project centered on structured data visibility and protocol-facing insights, helping surface blockchain activity in a more usable way.',
+    url: 'https://github.com/vinnugollakoti/AquaIndex',
+    stack: ['Sui', 'Indexing', 'Data', 'Web3'],
+  },
+  {
+    name: 'SuiProof',
+    meta: 'Verification Tooling',
+    description:
+      'Sui-focused proof and verification oriented build exploring blockchain trust flows, product clarity, and developer-facing utility.',
+    url: 'https://github.com/vinnugollakoti/SUIPROOF',
+    stack: ['Sui', 'Verification', 'Web3', 'Tooling'],
   },
 ]
 
