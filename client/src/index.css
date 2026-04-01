@@ -69,12 +69,14 @@ button {
 }
 
 .mac-dock {
+  --dock-gap: 10px;
+  --dock-padding-x: 14px;
   display: flex;
   align-items: end;
-  gap: 12px;
-  padding: 14px 18px 12px;
+  gap: var(--dock-gap);
+  padding: 11px var(--dock-padding-x) 10px;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 28px;
+  border-radius: 24px;
   background:
     linear-gradient(180deg, rgba(32, 32, 32, 0.74), rgba(18, 18, 18, 0.86)),
     var(--dock-background);
@@ -83,6 +85,7 @@ button {
     inset 0 1px 0 rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(26px) saturate(130%);
   -webkit-backdrop-filter: blur(26px) saturate(130%);
+  transition: gap 110ms ease-out, padding 110ms ease-out;
 }
 
 .mac-dock-item {
@@ -93,7 +96,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 7px;
+  gap: 5px;
   border: 0;
   padding: 0;
   background: transparent;
@@ -105,11 +108,11 @@ button {
 
 .mac-dock-tile {
   display: flex;
-  height: 64px;
-  width: 64px;
+  height: 54px;
+  width: 54px;
   align-items: center;
   justify-content: center;
-  border-radius: 18px;
+  border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, 0.02);
   background: rgba(255, 255, 255, 0.035);
   box-shadow:
@@ -140,8 +143,8 @@ button {
 }
 
 .mac-dock-indicator {
-  height: 6px;
-  width: 6px;
+  height: 5px;
+  width: 5px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.7);
   opacity: 0;
@@ -156,16 +159,16 @@ button {
 
 .mac-dock-tooltip {
   position: absolute;
-  bottom: calc(100% + 12px);
+  bottom: calc(100% + 10px);
   left: 50%;
   z-index: 3;
-  padding: 8px 14px;
+  padding: 7px 12px;
   border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 12px;
+  border-radius: 10px;
   background: rgba(37, 37, 37, 0.94);
   color: rgba(255, 255, 255, 0.9);
   font-family: var(--font-heading);
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   line-height: 1;
   white-space: nowrap;
@@ -175,8 +178,8 @@ button {
 }
 
 .mac-dock-divider {
-  margin: 0 3px 11px 4px;
-  height: 52px;
+  margin: 0 2px 9px 2px;
+  height: 44px;
   width: 1px;
   border-radius: 999px;
   background: linear-gradient(
