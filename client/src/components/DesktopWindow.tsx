@@ -36,12 +36,12 @@ export function DesktopWindow({
       dragMomentum={false}
       dragElastic={0.04}
       dragTransition={{ bounceStiffness: 600, bounceDamping: 28 }}
-      initial={isDesktop ? { opacity: 0, scale: 0.97 } : false}
+      initial={isDesktop ? { opacity: 0, scale: 0.992 } : false}
       animate={isDesktop ? { opacity: 1, scale: 1 } : undefined}
-      transition={{ duration: 0.55, delay: introDelay, ease: 'easeOut' }}
+      transition={{ duration: 0.22, delay: introDelay, ease: [0.22, 1, 0.36, 1] }}
       onPointerDown={onFocus}
       onDragEnd={(_, info) => onDragEnd(info.offset.x, info.offset.y)}
-      className={`overflow-hidden rounded-[22px] border shadow-[0_28px_90px_rgba(0,0,0,0.45)] backdrop-blur-2xl ${
+      className={`transform-gpu overflow-hidden rounded-[22px] border shadow-[0_28px_90px_rgba(0,0,0,0.45)] backdrop-blur-2xl will-change-transform ${
         isDesktop ? 'absolute' : 'relative mt-4 w-full'
       }`}
       style={
