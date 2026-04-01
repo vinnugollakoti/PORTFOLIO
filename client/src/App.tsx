@@ -66,7 +66,7 @@ const widgetDimensions: Record<WidgetId, { width: number; height: number }> = {
   calendar: { width: 180, height: 214 },
   player: { width: 248, height: 70 },
   visitors: { width: 142, height: 126 },
-  github: { width: 584, height: 166 },
+  github: { width: 760, height: 186 },
 }
 
 const clamp = (value: number, min: number, max: number) =>
@@ -168,6 +168,7 @@ function App() {
   const { cells, total, monthLabels, isLoading: calendarLoading } =
     useGithubCalendar()
   const { count: visitorCount } = useVisitCount()
+  const githubPanelWidth = useMemo(() => clamp(116 + cells.length * 11, 420, 720), [cells.length])
 
   const activeTheme = useMemo(
     () => themePresets.find((theme) => theme.id === themeId) ?? themePresets[0],
@@ -340,7 +341,10 @@ function App() {
 
   const updateWidgetPosition = (id: WidgetId, offsetX: number, offsetY: number) => {
     registerInteraction()
-    const config = widgetDimensions[id]
+    const config =
+      id === 'github'
+        ? { ...widgetDimensions.github, width: githubPanelWidth }
+        : widgetDimensions[id]
     const width = desktopRef.current?.clientWidth ?? window.innerWidth
     const height = desktopRef.current?.clientHeight ?? window.innerHeight
 
@@ -536,26 +540,57 @@ function App() {
 
     if (id === 'resume') {
       return (
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="space-y-5">
+          <div className="flex items-end justify-between gap-4 border-b border-white/8 pb-4">
+            <div>
+              <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-white/28">
+                Resume Picks
+              </p>
+              <p className="mt-2 text-sm text-white/52">
+                Choose the version that best fits the role you&apos;re hiring for.
+              </p>
+            </div>
+            <p className="hidden font-mono text-[11px] uppercase tracking-[0.18em] text-white/24 sm:block">
+              PDF • Drive
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
           {resumes.map((resume) => (
             <a
               key={resume.label}
               href={resume.url}
               target="_blank"
               rel="noreferrer"
-              className="rounded-2xl border border-white/8 bg-white/[0.03] p-5 transition hover:border-white/18"
+              className="group rounded-[24px] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.045),rgba(255,255,255,0.02))] p-5 transition hover:border-white/18 hover:bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.028))]"
             >
-              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/30">
-                Resume
-              </p>
-              <h3 className="mt-3 text-2xl font-semibold text-white">
-                {resume.label}
-              </h3>
-              <p className="mt-2 text-sm leading-7 text-white/55">
-                {resume.description}
-              </p>
+              <div className="flex items-start justify-between gap-3">
+                <span className="rounded-full border border-white/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-white/34">
+                  Resume
+                </span>
+                <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/26 transition group-hover:text-white/48">
+                  Open
+                </span>
+              </div>
+
+              <div className="mt-5">
+                <h3 className="text-[28px] font-semibold leading-[1.02] tracking-[-0.05em] text-white">
+                  {resume.label}
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-white/58">{resume.description}</p>
+              </div>
+
+              <div className="mt-6 flex items-center justify-between border-t border-white/8 pt-4">
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/26">
+                  View in Drive
+                </p>
+                <span className="rounded-full border border-white/8 px-3 py-1 text-[11px] text-white/42 transition group-hover:border-white/16 group-hover:text-white/64">
+                  PDF
+                </span>
+              </div>
             </a>
           ))}
+          </div>
         </div>
       )
     }
@@ -906,7 +941,7 @@ function App() {
         </FloatingWidget>
 
         <FloatingWidget
-          width={widgetDimensions.github.width}
+          width={githubPanelWidth}
           x={widgetState.github.x}
           y={widgetState.github.y}
           zIndex={widgetState.github.z}
@@ -919,11 +954,11 @@ function App() {
               <p className="text-xs">vinnugollakoti</p>
             </div>
             <p className="text-xs text-white/28">
-              {calendarLoading ? 'Loading contributions...' : `${total} contributions this year`}
+              {calendarLoading ? 'Loading contributions...' : `${total} contributions in the last year`}
             </p>
           </div>
 
-          <div className="mt-3 flex gap-3">
+          <div className="mt-3 flex gap-[3px]">
             {monthLabels.map((month) => (
               <span
                 key={month.index}
@@ -942,12 +977,11 @@ function App() {
                   <div
                     key={cell.date}
                     title={`${cell.date}: ${cell.count} contributions`}
-                    className="h-3 w-3 rounded-[2px]"
+                    className="h-2 w-2 rounded-[2px]"
                     style={{
-                      background:
-                        cell.level === 0
-                          ? 'rgba(255,255,255,0.06)'
-                          : ['#10351d', '#174f2b', '#246f3d', '#35a253'][cell.level - 1],
+                      background: cell.color ?? (cell.level === 0
+                        ? 'rgba(255,255,255,0.06)'
+                        : ['#10351d', '#174f2b', '#246f3d', '#35a253'][cell.level - 1]),
                     }}
                   />
                 ))}

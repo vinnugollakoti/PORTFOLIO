@@ -73,8 +73,8 @@ export const desktopWindows: Record<
   },
   resume: {
     label: 'Resume',
-    width: 420,
-    height: 280,
+    width: 500,
+    height: 340,
     x: 560,
     y: 280,
     defaultOpen: false,
