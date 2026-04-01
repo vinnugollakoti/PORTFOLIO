@@ -85,7 +85,9 @@ const getViewportScene = (width: number, height: number) => {
   const linksX = clamp(42, 24, safeWidth - widgetDimensions.links.width - 24)
   const linksY = 274
 
-  const themesX = clamp(profileX + profile.width + 86, 720, safeWidth - widgetDimensions.themes.width - 220)
+  const themesMaxX =
+    safeWidth - widgetDimensions.status.width - widgetDimensions.themes.width - 92
+  const themesX = clamp(profileX + profile.width + 74, 680, themesMaxX)
   const themesY = 130
 
   const statusX = safeWidth - widgetDimensions.status.width - 52
@@ -95,7 +97,11 @@ const getViewportScene = (width: number, height: number) => {
   const calendarY = clamp(safeHeight - widgetDimensions.calendar.height - 162, 430, 560)
 
   const visitorsX = 54
-  const visitorsY = clamp(safeHeight - widgetDimensions.visitors.height - 210, 520, 650)
+  const visitorsY = clamp(
+    linksY + widgetDimensions.links.height + 56,
+    540,
+    safeHeight - widgetDimensions.visitors.height - 92,
+  )
 
   const githubX = clamp(
     Math.round(safeWidth * 0.455),

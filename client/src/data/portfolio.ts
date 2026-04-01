@@ -106,7 +106,7 @@ export const desktopWindows: Record<
 }
 
 export const profileSummary = {
-  quote: 'Misalignment is not necessarily malice.',
+  quote: "If you're going through hell, KEEP GOING 🚀",
   bio: 'Full stack developer with strong experience across modern Web2 apps and Sui-focused Web3 products.',
   focus:
     'I build scalable interfaces, backend systems, smart contract integrations, and recruiter-friendly product experiences with a strong visual eye.',
