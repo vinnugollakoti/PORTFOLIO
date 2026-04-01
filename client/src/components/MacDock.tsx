@@ -55,7 +55,6 @@ export function MacDock({ items }: MacDockProps) {
     const dockRect = dockRef.current?.getBoundingClientRect()
     const pointer = pointerRef.current
     let shouldContinue = pointer.active
-    let maxScale = 1
 
     itemRefs.current.forEach((element, index) => {
       if (!element || !dockRect) {
@@ -79,7 +78,6 @@ export function MacDock({ items }: MacDockProps) {
       const current = scalesRef.current[index] ?? 1
       const next = current + (targetScale - current) * LERP
       scalesRef.current[index] = next
-      maxScale = Math.max(maxScale, next)
 
       const lift = (next - 1) * -18
       const iconScale = 1 + (next - 1) * 0.22
@@ -93,9 +91,10 @@ export function MacDock({ items }: MacDockProps) {
     })
 
     if (dockRef.current) {
-      const hoverProgress = Math.max(0, (maxScale - 1) / (MAX_SCALE - 1))
-      const nextGap = BASE_GAP + hoverProgress * HOVER_GAP_EXPANSION
-      const nextSidePadding = BASE_SIDE_PADDING + hoverProgress * HOVER_SIDE_PADDING_EXPANSION
+      const nextGap = pointer.active ? BASE_GAP + HOVER_GAP_EXPANSION : BASE_GAP
+      const nextSidePadding = pointer.active
+        ? BASE_SIDE_PADDING + HOVER_SIDE_PADDING_EXPANSION
+        : BASE_SIDE_PADDING
       dockRef.current.style.setProperty('--dock-gap', `${nextGap.toFixed(2)}px`)
       dockRef.current.style.setProperty('--dock-padding-x', `${nextSidePadding.toFixed(2)}px`)
     }
@@ -103,11 +102,6 @@ export function MacDock({ items }: MacDockProps) {
     if (shouldContinue) {
       frameRef.current = requestAnimationFrame(runAnimation)
       return
-    }
-
-    if (dockRef.current) {
-      dockRef.current.style.setProperty('--dock-gap', `${BASE_GAP}px`)
-      dockRef.current.style.setProperty('--dock-padding-x', `${BASE_SIDE_PADDING}px`)
     }
 
     frameRef.current = null
