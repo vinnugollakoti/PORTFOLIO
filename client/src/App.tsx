@@ -15,6 +15,7 @@ import {
   internalMenu,
   notes,
   openToWork,
+  projects,
   profileSummary,
   resumes,
   terminalCommands,
@@ -24,7 +25,6 @@ import {
   type WindowId,
 } from './data/portfolio'
 import { useGithubCalendar } from './hooks/useGithubCalendar'
-import { useGithubRepos } from './hooks/useGithubRepos'
 import { useVisitCount } from './hooks/useVisitCount'
 
 type WindowState = Record<
@@ -62,7 +62,7 @@ const widgetDimensions: Record<WidgetId, { width: number; height: number }> = {
   quote: { width: 220, height: 112 },
   links: { width: 220, height: 252 },
   status: { width: 208, height: 156 },
-  themes: { width: 392, height: 264 },
+  themes: { width: 332, height: 228 },
   calendar: { width: 180, height: 214 },
   player: { width: 248, height: 70 },
   visitors: { width: 142, height: 126 },
@@ -75,36 +75,45 @@ const clamp = (value: number, min: number, max: number) =>
 const getViewportScene = (width: number, height: number) => {
   const safeWidth = Math.max(width, 1280)
   const safeHeight = Math.max(height, 860)
-  const gutter = 16
-  const top = 52
 
   const profile = desktopWindows.profile
-  const profileX = Math.round((safeWidth - profile.width) / 2)
-  const profileY = 34
+  const profileX = clamp(Math.round(safeWidth * 0.245), 280, safeWidth - profile.width - 520)
+  const profileY = 100
 
-  const statusX = safeWidth - widgetDimensions.status.width - gutter
-  const calendarX = safeWidth - widgetDimensions.calendar.width - gutter
-  const themesX = clamp(
-    Math.round(profileX + profile.width / 2 - widgetDimensions.themes.width / 2 + 240),
-    540,
-    statusX - widgetDimensions.themes.width - 32,
+  const quoteX = clamp(48, 24, safeWidth - widgetDimensions.quote.width - 24)
+  const quoteY = 48
+  const linksX = clamp(42, 24, safeWidth - widgetDimensions.links.width - 24)
+  const linksY = 274
+
+  const themesX = clamp(profileX + profile.width + 86, 720, safeWidth - widgetDimensions.themes.width - 220)
+  const themesY = 130
+
+  const statusX = safeWidth - widgetDimensions.status.width - 52
+  const statusY = 38
+
+  const calendarX = safeWidth - widgetDimensions.calendar.width - 22
+  const calendarY = clamp(safeHeight - widgetDimensions.calendar.height - 162, 430, 560)
+
+  const visitorsX = 54
+  const visitorsY = clamp(safeHeight - widgetDimensions.visitors.height - 210, 520, 650)
+
+  const githubX = clamp(
+    Math.round(safeWidth * 0.455),
+    560,
+    safeWidth - widgetDimensions.github.width - 170,
   )
-  const themesY = 122
+  const githubY = clamp(safeHeight - widgetDimensions.github.height - 160, 500, 640)
 
-  const githubX = safeWidth - widgetDimensions.github.width - 88
-  const githubY = clamp(safeHeight - widgetDimensions.github.height - 132, 350, 620)
-
-  const playerY = safeHeight - widgetDimensions.player.height - 120
-  const visitorsX = 280
-  const visitorsY = safeHeight - widgetDimensions.visitors.height - 98
+  const playerX = clamp(profileX + 12, 320, safeWidth - widgetDimensions.player.width - 380)
+  const playerY = clamp(safeHeight - widgetDimensions.player.height - 178, 560, 700)
 
   const widgetState: WidgetState = {
-    quote: { x: gutter, y: top, z: 2 },
-    links: { x: gutter, y: 182, z: 2 },
-    status: { x: statusX, y: 44, z: 2 },
+    quote: { x: quoteX, y: quoteY, z: 2 },
+    links: { x: linksX, y: linksY, z: 2 },
+    status: { x: statusX, y: statusY, z: 2 },
     themes: { x: themesX, y: themesY, z: 2 },
-    calendar: { x: calendarX, y: 212, z: 2 },
-    player: { x: gutter, y: playerY, z: 2 },
+    calendar: { x: calendarX, y: calendarY, z: 2 },
+    player: { x: playerX, y: playerY, z: 2 },
     visitors: { x: visitorsX, y: visitorsY, z: 2 },
     github: { x: githubX, y: githubY, z: 2 },
   }
@@ -156,7 +165,6 @@ function App() {
   const desktopRef = useRef<HTMLDivElement | null>(null)
   const hasInteractedRef = useRef(false)
 
-  const { repos, isLoading: reposLoading } = useGithubRepos()
   const { cells, total, monthLabels, isLoading: calendarLoading } =
     useGithubCalendar()
   const { count: visitorCount } = useVisitCount()
@@ -354,7 +362,7 @@ function App() {
             <h1 className="max-w-sm text-5xl font-semibold leading-[0.92] tracking-[-0.06em] text-white">
               Vinay
               <br />
-              Reddy
+              Gollakoti
             </h1>
             <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.35em] text-white/42">
               Full Stack / Sui / Web3 Engineer
@@ -441,10 +449,10 @@ function App() {
           <div className="mb-5 flex items-center justify-between">
             <div>
               <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-white/30">
-                GitHub Repositories
+                Selected Projects
               </p>
               <p className="mt-2 text-sm text-white/45">
-                Dynamic tiles from GitHub API with graceful fallback.
+                Product work across Web2 and Sui-focused Web3 systems.
               </p>
             </div>
             <a
@@ -458,44 +466,35 @@ function App() {
           </div>
 
           <div className="grid gap-3 md:grid-cols-2">
-            {reposLoading
-              ? Array.from({ length: 6 }).map((_, index) => (
-                  <div
-                    key={index}
-                    className="h-36 animate-pulse rounded-2xl border border-white/8 bg-white/[0.03]"
-                  />
-                ))
-              : repos.map((repo) => (
-                  <a
-                    key={repo.name}
-                    href={repo.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group rounded-2xl border border-white/8 bg-white/[0.03] p-4 transition hover:border-white/18 hover:bg-white/[0.045]"
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      <h3 className="text-lg font-semibold capitalize text-white">
-                        {repo.name}
-                      </h3>
-                      <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/32">
-                        {repo.stars}★
-                      </span>
-                    </div>
-                    <p className="mt-3 text-sm leading-7 text-white/56">
-                      {repo.description}
+            {projects.map((project) => (
+              <a
+                key={project.name}
+                href={project.url}
+                target="_blank"
+                rel="noreferrer"
+                className="group rounded-2xl border border-white/8 bg-white/[0.03] p-4 transition hover:border-white/18 hover:bg-white/[0.045]"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <h3 className="text-lg font-semibold text-white">{project.name}</h3>
+                    <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.16em] text-white/30">
+                      {project.meta}
                     </p>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {repo.stack.map((item) => (
-                        <span
-                          key={item}
-                          className="rounded-full border border-white/8 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-white/35"
-                        >
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </a>
-                ))}
+                  </div>
+                </div>
+                <p className="mt-3 text-sm leading-7 text-white/56">{project.description}</p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {project.stack.map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-full border border-white/8 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-white/35"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </a>
+            ))}
           </div>
         </div>
       )
@@ -770,26 +769,28 @@ function App() {
           onFocus={() => bringWidgetToFront('themes')}
           onDragEnd={(offsetX, offsetY) => updateWidgetPosition('themes', offsetX, offsetY)}
         >
-          <div className="border-b border-white/8 pb-5">
-            <div className="mb-5 flex justify-center">
-              <span className="h-1.5 w-20 rounded-full bg-white/10" />
+          <div className="border-b border-white/8 pb-4">
+            <div className="mb-4 flex justify-center">
+              <span className="h-1.5 w-16 rounded-full bg-white/10" />
             </div>
             <div className="flex items-start justify-between">
-              <p className="pt-1 font-mono text-[14px] uppercase tracking-[0.32em] text-white/46">
+              <p className="pt-1 font-mono text-[12px] uppercase tracking-[0.28em] text-white/46">
                 Theme
               </p>
               <div className="text-right">
-                <p className="font-mono text-[14px] uppercase tracking-[0.22em] text-white/52">
+                <p className="font-mono text-[12px] uppercase tracking-[0.18em] text-white/52">
                   {activeTheme.label}
                 </p>
-                <p className="mt-1 font-mono text-[13px] uppercase tracking-[0.2em] text-white/28">
-                  {activeTheme.subtitle}
-                </p>
+                {activeTheme.subtitle !== activeTheme.label ? (
+                  <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.18em] text-white/28">
+                    {activeTheme.subtitle}
+                  </p>
+                ) : null}
               </div>
             </div>
           </div>
 
-          <div className="mt-5 grid grid-cols-4 gap-4">
+          <div className="mt-4 grid grid-cols-4 gap-3">
             {themePresets.map((theme) => {
               const selected = theme.id === themeId
               return (
@@ -797,10 +798,10 @@ function App() {
                   key={theme.id}
                   type="button"
                   onClick={() => setThemeId(theme.id)}
-                  className="text-left"
+                  className="flex w-full flex-col items-center text-left"
                 >
                   <div
-                    className={`relative h-[98px] overflow-hidden rounded-[18px] border transition ${
+                    className={`relative h-[78px] w-full overflow-hidden rounded-[14px] border transition ${
                       selected
                         ? 'border-white/85 shadow-[0_0_0_1px_rgba(255,255,255,0.38),0_8px_30px_rgba(0,0,0,0.28)]'
                         : 'border-white/10'
@@ -813,18 +814,20 @@ function App() {
                   >
                     {theme.id === 'default' ? (
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/14 text-white/16">
-                          <Icon name="search" className="h-5 w-5" />
+                        <div className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-black/14 text-white/16">
+                          <Icon name="search" className="h-4 w-4" />
                         </div>
                       </div>
                     ) : null}
                     {selected ? (
-                      <span className="absolute bottom-3 right-3 h-3.5 w-3.5 rounded-full bg-white/92 shadow-[0_0_18px_rgba(255,255,255,0.5)]" />
+                      <span className="absolute bottom-2.5 right-2.5 h-3 w-3 rounded-full bg-white/92 shadow-[0_0_18px_rgba(255,255,255,0.5)]" />
                     ) : null}
                   </div>
-                  <p className="mt-3 text-center font-mono text-[12px] uppercase tracking-[0.18em] text-white/38">
-                    {theme.label}
-                  </p>
+                  <span className="mt-2 flex min-h-[24px] items-start justify-center text-center">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/38">
+                      {theme.label}
+                    </p>
+                  </span>
                 </button>
               )
             })}
