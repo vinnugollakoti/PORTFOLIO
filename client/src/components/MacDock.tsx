@@ -157,7 +157,7 @@ export function MacDock({ items }: MacDockProps) {
               ) : null}
               <span className="mac-dock-tile">
                 <span className="mac-dock-icon">
-                  <Icon name={item.icon} className="h-[23px] w-[23px]" />
+                  <Icon name={item.icon} className="h-[20px] w-[20px]" />
                 </span>
               </span>
               <span className="mac-dock-indicator" />
