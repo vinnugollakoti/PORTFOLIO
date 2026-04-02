@@ -193,6 +193,14 @@ export const projects = [
     url: 'https://github.com/vinnugollakoti/SUIPROOF',
     stack: ['Sui', 'Verification', 'Web3', 'Tooling'],
   },
+  {
+    name: 'Evently',
+    meta: 'Event Management System',
+    description:
+      'Event-focused platform concept built around organizer workflows and participant-side coordination.',
+    url: 'https://github.com/vinnugollakoti/Evently.git',
+    stack: ['Web App', 'Frontend', 'Product', 'Management'],
+  },
 ]
 
 export const terminalCommands = [
@@ -206,7 +214,7 @@ export const terminalCommands = [
   },
   {
     command: 'status',
-    output: 'Open to internships, full-time roles, freelance work, and interesting Web3 collaborations.',
+    output: 'Building soon.',
   },
 ]
 
@@ -226,6 +234,15 @@ export const uses = [
 ]
 
 export const notes = [
+  {
+    month: 'Apr 2026',
+    lines: [
+      'Recently, I worked at 2RK Capital, a Portugal-based company, where I built DeFi-focused systems across the Sui ecosystem and worked with protocols such as Cetus, Bluefin, Momentum, and FlowX Finance.',
+      'That experience pushed me deeper into exchange integrations, protocol-aware product thinking, and practical onchain workflows. It also led me to build my own testnet DEX on Sui, AquaDex, which is featured in the projects section.',
+      'Before that internship, I spent a lot of time exploring Web3 more broadly through Ethereum, Solidity, and ETHGlobal hackathons, which helped sharpen both my product instincts and my comfort with fast-moving blockchain environments.',
+      'Alongside Web3, I am also a full stack Web2 developer with end-to-end product experience. Through our agency, we have built websites for Indian local businesses, and that gave me strong real-world exposure to deployment, client communication, and production delivery.',
+    ],
+  },
   {
     month: 'Mar 2026',
     lines: [

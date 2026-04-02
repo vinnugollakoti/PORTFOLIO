@@ -18,7 +18,6 @@ import {
   projects,
   profileSummary,
   resumes,
-  terminalCommands,
   themePresets,
   uses,
   type ThemeId,
@@ -603,16 +602,22 @@ function App() {
 
     if (id === 'terminal') {
       return (
-        <div className="space-y-4 font-mono text-[13px] text-white/62">
-          {terminalCommands.map((line) => (
-            <div
-              key={line.command}
-              className="rounded-2xl border border-white/8 bg-black/16 p-4"
-            >
-              <p className="text-white/32">$ {line.command}</p>
-              <p className="mt-2 whitespace-pre-line text-white/68">{line.output}</p>
-            </div>
-          ))}
+        <div className="relative flex h-full min-h-[220px] items-center justify-center overflow-hidden rounded-[22px] border border-white/8 bg-black/18">
+          <div className="pointer-events-none absolute inset-0">
+            <div className="absolute left-[-10%] top-1/2 h-px w-[120%] -translate-y-1/2 rotate-[16deg] bg-white/10" />
+            <div className="absolute left-[-10%] top-1/2 h-px w-[120%] -translate-y-1/2 rotate-[-16deg] bg-white/10" />
+          </div>
+          <div className="relative z-10 text-center">
+            <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-white/24">
+              Terminal
+            </p>
+            <p className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-white/82">
+              Building soon
+            </p>
+            <p className="mt-3 max-w-xs text-sm leading-7 text-white/38">
+              This panel is still being designed and will be available in a future update.
+            </p>
+          </div>
         </div>
       )
     }
