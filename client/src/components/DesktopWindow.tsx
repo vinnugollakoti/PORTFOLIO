@@ -78,7 +78,7 @@ export function DesktopWindow({
           {title}
         </div>
       </div>
-      <div className="h-[calc(100%-44px)] overflow-auto p-5">{children}</div>
+      <div className="panel-scroll h-[calc(100%-44px)] overflow-auto p-5">{children}</div>
     </motion.section>
   )
 }

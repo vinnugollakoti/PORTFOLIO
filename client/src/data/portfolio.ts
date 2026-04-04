@@ -221,7 +221,7 @@ export const terminalCommands = [
 export const uses = [
   {
     title: 'Frontend',
-    items: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+    items: ['HTML', 'CSS', 'JavaScript', 'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
   },
   {
     title: 'Backend',
@@ -229,7 +229,11 @@ export const uses = [
   },
   {
     title: 'Web3',
-    items: ['Sui', 'Smart Contracts', 'dApps', 'Blockchain Fundamentals'],
+    items: ['Sui', 'Smart Contracts', 'dApps', 'Blockchain Fundamentals', 'EVM Chain Fundamentals'],
+  },
+  {
+    title: 'Programming Languages',
+    items: ['Python'],
   },
 ]
 
