@@ -374,7 +374,7 @@ function App() {
               Gollakoti
             </h1>
             <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.35em] text-white/42">
-              Full Stack / Sui / Web3 Engineer
+              AI / Full Stack / Sui / Web3 Engineer
             </p>
             <div className="mt-5 border-t border-white/8 pt-5 text-[15px] leading-8 text-white/62">
               <p>{profileSummary.bio}</p>
