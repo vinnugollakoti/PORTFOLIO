@@ -107,12 +107,20 @@ export const desktopWindows: Record<
 
 export const profileSummary = {
   quote: "If you're going through hell, KEEP GOING 🚀",
-  bio: 'Full stack developer with strong experience across modern Web2 apps and Sui-focused Web3 products.',
+  bio: 'Associate AI Engineer at Lowes India with strong experience across modern Web2 apps, backend systems, and Sui-focused Web3 products.',
   focus:
-    'I build scalable interfaces, backend systems, smart contract integrations, and recruiter-friendly product experiences with a strong visual eye.',
+    'I build scalable interfaces, AI-ready backend systems, smart contract integrations, and recruiter-friendly product experiences with a strong visual eye.',
 }
 
 export const experiences = [
+  {
+    company: 'Lowes India',
+    role: 'Associate AI Engineer',
+    period: 'May 2026 - Present',
+    summary:
+      'Joined Lowes India as an Associate AI Engineer, working at the intersection of AI engineering, backend systems, integrations, and enterprise-scale product delivery.',
+    stack: ['AI Engineering', 'Java', 'Spring Boot', 'Apache Camel', 'Kafka'],
+  },
   {
     company: '2RK Capital',
     role: 'DeFi Smart Contract Engineer • Remote',
@@ -206,11 +214,11 @@ export const projects = [
 export const terminalCommands = [
   {
     command: 'whoami',
-    output: 'Vinay Reddy\nFull Stack Developer | Blockchain Developer (Sui)',
+    output: 'Vinay Reddy\nAssociate AI Engineer | Full Stack Developer | Blockchain Developer (Sui)',
   },
   {
     command: 'stack',
-    output: 'React, TypeScript, Node.js, Prisma, MongoDB, PostgreSQL, Tailwind, Sui',
+    output: 'React, TypeScript, Java, Spring Boot, Apache Camel, Kafka, Node.js, Prisma, PostgreSQL, Sui',
   },
   {
     command: 'status',
@@ -225,7 +233,11 @@ export const uses = [
   },
   {
     title: 'Backend',
-    items: ['Node.js', 'Prisma', 'Mongoose', 'PostgreSQL'],
+    items: ['Java', 'Spring Boot', 'Apache Camel', 'Kafka', 'Node.js', 'Prisma', 'Mongoose', 'PostgreSQL'],
+  },
+  {
+    title: 'AI & Engineering',
+    items: ['AI Engineering', 'Backend Systems', 'System Integrations', 'Event-driven Systems'],
   },
   {
     title: 'Web3',
@@ -233,7 +245,7 @@ export const uses = [
   },
   {
     title: 'Programming Languages',
-    items: ['Python'],
+    items: ['Java', 'Python', 'TypeScript', 'JavaScript'],
   },
 ]
 
@@ -265,19 +277,19 @@ export const notes = [
 
 export const featuredLinks = [
   {
-    title: 'The Zen of Erlang',
-    meta: 'Fred Hebert • systems',
-    url: 'https://ferd.ca/the-zen-of-erlang.html',
+    title: 'Lioric AI Chatbot Widget',
+    meta: 'AI chat widget',
+    url: 'https://dev.to/vinnugollakoti/best-ai-chatbot-widget-2026-3598',
   },
   {
-    title: 'Fearless Concurrency',
-    meta: 'The Rust Book • rust',
-    url: 'https://doc.rust-lang.org/book/ch16-00-concurrency.html',
+    title: 'Gpushx',
+    meta: 'GPU cloud platform',
+    url: 'https://dev.to/vinnugollakoti/gpushx-3n38',
   },
   {
-    title: 'Meditations',
-    meta: 'Marcus Aurelius • philosophy',
-    url: 'https://www.gutenberg.org/ebooks/2680',
+    title: 'Architecture of Lioric',
+    meta: 'System architecture',
+    url: 'https://dev.to/vinnugollakoti/lioric-architecture-explained-how-the-lightweight-ai-chat-widget-really-works-50ab',
   },
 ]
 
