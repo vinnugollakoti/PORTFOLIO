@@ -15,7 +15,7 @@ export const internalMenu: Array<{ id: WindowId; label: string; icon: string }> 
   { id: 'contact', label: 'Contact', icon: 'contact' },
   { id: 'resume', label: 'Resume', icon: 'resume' },
   { id: 'terminal', label: 'Terminal', icon: 'terminal' },
-  { id: 'uses', label: 'Uses', icon: 'uses' },
+  { id: 'uses', label: 'Skills', icon: 'uses' },
   { id: 'notes', label: 'Notes', icon: 'notes' },
 ]
 
@@ -49,16 +49,16 @@ export const desktopWindows: Record<
   },
   experience: {
     label: 'Experience',
-    width: 600,
-    height: 500,
+    width: 620,
+    height: 520,
     x: 370,
     y: 118,
     defaultOpen: false,
   },
   projects: {
     label: 'Projects',
-    width: 640,
-    height: 510,
+    width: 660,
+    height: 520,
     x: 470,
     y: 150,
     defaultOpen: false,
@@ -88,17 +88,17 @@ export const desktopWindows: Record<
     defaultOpen: false,
   },
   uses: {
-    label: 'Uses',
-    width: 360,
-    height: 330,
+    label: 'Skills',
+    width: 420,
+    height: 400,
     x: 790,
     y: 150,
     defaultOpen: false,
   },
   notes: {
-    label: 'Notes',
-    width: 450,
-    height: 430,
+    label: 'Notes & Bio',
+    width: 470,
+    height: 450,
     x: 760,
     y: 90,
     defaultOpen: false,
@@ -107,35 +107,43 @@ export const desktopWindows: Record<
 
 export const profileSummary = {
   quote: "If you're going through hell, KEEP GOING 🚀",
-  bio: 'Associate AI Engineer at Lowes India with strong experience across modern Web2 apps, backend systems, and Sui-focused Web3 products.',
+  bio: 'Associate AI Engineer at Lowe’s India and Full-Stack & Blockchain Developer with hands-on experience in AI systems, MERN stack, and smart contract engineering on Ethereum and Sui.',
   focus:
-    'I build scalable interfaces, AI-ready backend systems, smart contract integrations, and recruiter-friendly product experiences with a strong visual eye.',
+    'I build production-grade AI & backend microservices (Spring Boot, MCPs, Kafka, Elasticsearch), scalable full-stack applications, and high-performance Web3/DeFi products.',
 }
 
 export const experiences = [
   {
-    company: 'Lowes India',
+    company: "Lowe's India",
     role: 'Associate AI Engineer',
     period: 'May 2026 - Present',
     summary:
-      'Joined Lowes India as an Associate AI Engineer, working at the intersection of AI engineering, backend systems, integrations, and enterprise-scale product delivery.',
-    stack: ['AI Engineering', 'Java', 'Spring Boot', 'Apache Camel', 'Kafka'],
+      'Working as a Full-Stack & AI Engineer building Model Context Protocol (MCP) servers for Lowe’s internal systems and developing production-oriented Spring Boot backend microservices with Apache Camel for the EDI sector.',
+    stack: ['Python', 'Java', 'Spring Boot', 'Apache Camel', 'Elasticsearch', 'OracleDB', 'PostgreSQL', 'Kafka', 'RabbitMQ', 'MCPs'],
   },
   {
     company: '2RK Capital',
-    role: 'DeFi Smart Contract Engineer • Remote',
-    period: 'Recent',
+    role: 'DeFi Developer • Remote',
+    period: 'Mar 2025 - Mar 2026',
     summary:
-      'Built Web3 systems around a DeFi protocol on the Sui blockchain, working on smart-contract-driven flows, protocol-facing features, and product experiences that connected onchain logic with usable interfaces.',
-    stack: ['Sui', 'DeFi', 'Smart Contracts', 'Web3 Systems'],
+      'Developed and deployed production-grade smart contracts on the Sui blockchain, contributing to cross-chain architecture and DeFi pool management in active production environments.',
+    stack: ['Sui Blockchain', 'Pysui', 'Sui SDKs', 'Solidity', 'Move Contracts', 'DeFi Protocols'],
+  },
+  {
+    company: 'Freelance',
+    role: 'Full-Stack Web Developer',
+    period: 'Jun 2025 - Nov 2025',
+    summary:
+      'Built and delivered end-to-end production web platforms including Way4Track, managing both responsive frontend interfaces and backend API integrations aligned with business requirements.',
+    stack: ['React.js', 'Tailwind CSS', 'SQL', 'Node.js', 'API Management'],
   },
   {
     company: 'GeeksforGeeks Students Club, Kalasalingam University',
     role: 'Web Developer Lead',
-    period: '1 year',
+    period: '1 Year',
     summary:
-      'Led web development efforts for the student club, guiding projects, supporting peers, and helping shape practical frontend work across events, initiatives, and campus-driven builds.',
-    stack: ['Leadership', 'Web Development', 'Frontend', 'Community'],
+      'Led web development efforts for the student club, guiding technical initiatives, mentoring peers, and organizing hackathon teams.',
+    stack: ['Leadership', 'Full-Stack Web', 'Community', 'Mentorship'],
   },
 ]
 
@@ -143,139 +151,154 @@ export const resumes = [
   {
     label: 'Web2 Resume',
     url: 'https://drive.google.com/file/d/1RTDglnJZDKG1vhTLnLeIbdk2WSbslSMj/view',
-    description: 'For frontend, backend, and full stack product engineering roles.',
+    description: 'For AI engineering, full-stack, backend, and product engineering roles.',
   },
   {
     label: 'Web3 Resume',
     url: 'https://drive.google.com/file/d/1K94NLhOGxfofASRKV4wPR7HHvBdhAuCE/view',
-    description: 'For blockchain, protocol, and dApp-focused opportunities.',
+    description: 'For blockchain, DeFi protocol, and smart contract developer opportunities.',
   },
 ]
 
 export const projects = [
   {
-    name: 'IDPS',
-    meta: 'School ERP System',
+    name: 'Lioric',
+    meta: 'AI RAG Chatbot SDK & NPM Package',
     description:
-      'Full-stack school management platform covering admin workflows, student records, and operational dashboards, built with a PostgreSQL-backed TypeScript stack and linked here through the backend repository.',
+      'Complete AI-Powered RAG Chatbot solution enabling developers to embed document-aware AI assistants into websites in minutes. Published as lioric-react on NPM with an interactive dashboard, ChromaDB vector search, and custom document processing.',
+    url: 'https://dev.to/vinnugollakoti/lioric-architecture-explained-how-the-lightweight-ai-chat-widget-really-works-50ab',
+    stack: ['React.js', 'Node.js', 'Express', 'PostgreSQL', 'Prisma', 'ChromaDB', 'RAG Pipeline'],
+  },
+  {
+    name: 'IDPS Backend',
+    meta: 'Production School ERP Backend',
+    description:
+      'Production-grade centralized backend powering a complete school ERP system across Parent, Teacher, and Admin applications. Features relational schema design with Prisma, secure JWT authentication, and serverless AWS Lambda email triggers.',
     url: 'https://github.com/vinnugollakoti/IDPS-Backend',
-    stack: ['PostgreSQL', 'TypeScript', 'Node.js', 'Full Stack'],
+    stack: ['Node.js', 'TypeScript', 'Express', 'PostgreSQL', 'Prisma ORM', 'AWS Lambda', 'JWT'],
   },
   {
     name: 'WAY4TRACK',
-    meta: 'Production E-commerce Build',
+    meta: 'Production E-Commerce Platform',
     description:
-      'Production-level ecommerce website built for a company, focused on practical shopping flows, polished UI delivery, and a stable real-world product setup.',
+      'Full production-ready e-commerce platform built for a commercial client, focused on reliable shopping flows, responsive product catalogs, and optimized client delivery.',
     url: 'https://github.com/vinnugollakoti/WAY4TRACK',
-    stack: ['E-commerce', 'Production', 'Frontend', 'Web App'],
+    stack: ['React.js', 'Tailwind CSS', 'SQL', 'Node.js', 'REST API'],
   },
   {
     name: 'AQUADEX',
-    meta: 'Sui DeFi Product',
+    meta: 'Sui DeFi DEX Protocol',
     description:
-      'DeFi product work around trading and onchain protocol interactions in the Sui ecosystem, combining Web3 product thinking with usable frontend flows.',
+      'Decentralized exchange protocol and trading interface built on the Sui blockchain, combining onchain liquidity pools, automated market making flows, and seamless Web3 wallet interactions.',
     url: 'https://github.com/vinnugollakoti/AQUADEX',
-    stack: ['Sui', 'DeFi', 'Web3', 'Frontend'],
+    stack: ['Sui', 'Move', 'DeFi', 'Web3', 'React.js'],
   },
   {
     name: 'AquaLend',
-    meta: 'Sui Lending Product',
+    meta: 'Sui Lending Protocol',
     description:
-      'Lending-focused Sui project built around protocol interactions, product usability, and onchain financial flows.',
+      'Lending and borrowing DeFi protocol built on Sui smart contracts, featuring algorithmic interest curves, collateralized loans, and real-time protocol analytics.',
     url: 'https://github.com/vinnugollakoti/AquaLend',
-    stack: ['Sui', 'Lending', 'Smart Contracts', 'Web3'],
+    stack: ['Sui', 'Move', 'Lending', 'Smart Contracts', 'Web3'],
   },
   {
     name: 'AquaIndex',
-    meta: 'Sui Indexing Product',
+    meta: 'Sui Blockchain Indexer',
     description:
-      'Project centered on structured data visibility and protocol-facing insights, helping surface blockchain activity in a more usable way.',
+      'High-speed structured data indexer designed to capture, transform, and expose real-time Sui onchain events and transaction telemetry for dApps and analytics dashboards.',
     url: 'https://github.com/vinnugollakoti/AquaIndex',
-    stack: ['Sui', 'Indexing', 'Data', 'Web3'],
+    stack: ['Sui', 'Indexing', 'TypeScript', 'Data Pipeline'],
   },
   {
     name: 'SuiProof',
-    meta: 'Verification Tooling',
+    meta: 'Verification & Trust Tooling',
     description:
-      'Sui-focused proof and verification oriented build exploring blockchain trust flows, product clarity, and developer-facing utility.',
+      'Sui-focused proof and verification tool exploring decentralized identity trust flows, cryptographic assertions, and developer-first utility.',
     url: 'https://github.com/vinnugollakoti/SUIPROOF',
-    stack: ['Sui', 'Verification', 'Web3', 'Tooling'],
-  },
-  {
-    name: 'Evently',
-    meta: 'Event Management System',
-    description:
-      'Event-focused platform concept built around organizer workflows and participant-side coordination.',
-    url: 'https://github.com/vinnugollakoti/Evently.git',
-    stack: ['Web App', 'Frontend', 'Product', 'Management'],
+    stack: ['Sui', 'Move', 'Verification', 'Cryptography'],
   },
 ]
 
 export const terminalCommands = [
   {
     command: 'whoami',
-    output: 'Vinay Reddy\nAssociate AI Engineer | Full Stack Developer | Blockchain Developer (Sui)',
+    output: 'G Vinay Reddy\nAssociate AI Engineer at Lowe’s India | Full Stack & Blockchain Engineer (Sui & ETH)',
   },
   {
     command: 'stack',
-    output: 'React, TypeScript, Java, Spring Boot, Apache Camel, Kafka, Node.js, Prisma, PostgreSQL, Sui',
+    output: 'Python, Java (Spring Boot, Apache Camel), React, TypeScript, Node.js, PostgreSQL, Kafka, Elasticsearch, ChromaDB, Sui (Move), Solidity',
+  },
+  {
+    command: 'education',
+    output: 'Kalvium UG Program in CS (Software Product Engineering) | Kalasalingam University (BTech, 2023-2027)',
   },
   {
     command: 'status',
-    output: 'Building soon.',
+    output: 'Building production AI MCPs, backend microservices, and Web3 products.',
   },
 ]
 
 export const uses = [
   {
-    title: 'Frontend',
-    items: ['HTML', 'CSS', 'JavaScript', 'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
-  },
-  {
-    title: 'Backend',
-    items: ['Java', 'Spring Boot', 'Apache Camel', 'Kafka', 'Node.js', 'Prisma', 'Mongoose', 'PostgreSQL'],
+    title: 'Languages',
+    items: ['Python (Advanced)', 'JavaScript (Intermediate)', 'Java (Intermediate)', 'TypeScript', 'C++', 'Rust', 'SQL'],
   },
   {
     title: 'AI & Engineering',
-    items: ['AI Engineering', 'Backend Systems', 'System Integrations', 'Event-driven Systems'],
+    items: ['Model Context Protocol (MCP)', 'RAG Pipelines', 'ChromaDB (VectorDB)', 'Elasticsearch', 'LLM Response Optimization'],
   },
   {
-    title: 'Web3',
-    items: ['Sui', 'Smart Contracts', 'dApps', 'Blockchain Fundamentals', 'EVM Chain Fundamentals'],
+    title: 'Backend & Microservices',
+    items: ['Java Spring Boot', 'Apache Camel', 'Node.js', 'Express.js', 'AWS Lambda', 'JWT Auth', 'RESTful APIs'],
   },
   {
-    title: 'Programming Languages',
-    items: ['Java', 'Python', 'TypeScript', 'JavaScript'],
+    title: 'Databases & Message Queues',
+    items: ['PostgreSQL', 'MongoDB', 'OracleDB', 'Apache Kafka', 'RabbitMQ', 'Prisma ORM', 'Mongoose'],
+  },
+  {
+    title: 'Frontend',
+    items: ['React.js', 'Redux', 'Tailwind CSS', 'HTML5', 'CSS3', 'Framer Motion', 'Vite'],
+  },
+  {
+    title: 'Web3 & Blockchain',
+    items: ['Sui Blockchain', 'Move Contracts (Pysui, Sui SDKs)', 'Solidity', 'Ethereum', 'Hardhat', 'Truffle', 'Web3.js', 'Ganache'],
+  },
+  {
+    title: 'Tools & DevOps',
+    items: ['Git', 'GitHub', 'Bitbucket', 'Jira', 'Postman', 'Docker', 'Linux/macOS'],
   },
 ]
 
 export const notes = [
   {
-    month: 'Apr 2026',
+    month: 'Sep 2026',
     lines: [
-      'Recently, I worked at 2RK Capital, a Portugal-based company, where I built DeFi-focused systems across the Sui ecosystem and worked with protocols such as Cetus, Bluefin, Momentum, and FlowX Finance.',
-      'That experience pushed me deeper into exchange integrations, protocol-aware product thinking, and practical onchain workflows. It also led me to build my own testnet DEX on Sui, AquaDex, which is featured in the projects section.',
-      'Before that internship, I spent a lot of time exploring Web3 more broadly through Ethereum, Solidity, and ETHGlobal hackathons, which helped sharpen both my product instincts and my comfort with fast-moving blockchain environments.',
-      'Alongside Web3, I am also a full stack Web2 developer with end-to-end product experience. Through our agency, we have built websites for Indian local businesses, and that gave me strong real-world exposure to deployment, client communication, and production delivery.',
+      'Currently at Lowe’s India as an Associate AI Engineer, where I develop Model Context Protocol (MCP) servers for in-house enterprise systems and build high-throughput Spring Boot backend microservices with Apache Camel for EDI workflows.',
+      'Working across Python, Java Spring Boot, Elasticsearch, Kafka, and relational databases has solidified my ability to architect robust, production-grade distributed systems.',
     ],
   },
   {
     month: 'Mar 2026',
     lines: [
-      'Building things that feel sharp, calm, and intentional matters just as much as writing code that works.',
-      'I want products to be understandable at first glance and impressive after deeper use.',
+      'At 2RK Capital, I built production-grade DeFi smart contracts and pool management logic on the Sui blockchain using Move, Pysui, and Sui SDKs, alongside Solidity contracts for cross-chain mechanisms.',
+      'This hands-on protocol work led me to build my testnet DEX (AquaDex), AquaLend, and indexing tooling, sharpening both my protocol-level design and intuitive Web3 UX instincts.',
     ],
   },
   {
-    month: 'Feb 2026',
+    month: 'Hackathons & Community',
     lines: [
-      'Hackathons keep teaching me that speed matters, but clarity matters more.',
-      'The best technical work still needs a human-friendly story around it.',
+      'Passionate hackathon competitor: participated in three ETHGlobal hackathons (and preparing for the fourth) and won prizes in multiple college hackathons through technical clubs.',
+      'Pursuing BTech in Computer Science via Kalvium’s Software Product Engineering program at Kalasalingam University (2023–2027).',
     ],
   },
 ]
 
 export const featuredLinks = [
+  {
+    title: 'Architecture of Lioric',
+    meta: 'System architecture & RAG',
+    url: 'https://dev.to/vinnugollakoti/lioric-architecture-explained-how-the-lightweight-ai-chat-widget-really-works-50ab',
+  },
   {
     title: 'Lioric AI Chatbot Widget',
     meta: 'AI chat widget',
@@ -286,25 +309,20 @@ export const featuredLinks = [
     meta: 'GPU cloud platform',
     url: 'https://dev.to/vinnugollakoti/gpushx-3n38',
   },
-  {
-    title: 'Architecture of Lioric',
-    meta: 'System architecture',
-    url: 'https://dev.to/vinnugollakoti/lioric-architecture-explained-how-the-lightweight-ai-chat-widget-really-works-50ab',
-  },
 ]
 
 export const openToWork = [
   {
     label: 'Building',
-    value: 'Modern portfolios, web apps, and Sui-first dApp ideas',
+    value: 'Enterprise MCPs, AI RAG systems, and Sui/Web3 DeFi protocols',
   },
   {
     label: 'Reading',
-    value: 'Developer tooling, product design, and systems thinking',
+    value: 'Distributed systems, event streaming with Kafka, and protocol architecture',
   },
   {
     label: 'Writing',
-    value: 'Notes on learning, shipping, and improving as a builder',
+    value: 'Technical deep-dives on RAG architecture and scalable backend engineering',
   },
 ]
 

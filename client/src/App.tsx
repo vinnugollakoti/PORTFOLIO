@@ -1044,9 +1044,9 @@ function App() {
             Vinay Reddy
           </p>
           <h1 className="mt-3 text-4xl font-semibold tracking-[-0.05em] text-white">
-            Full Stack Developer
+            Associate AI Engineer
             <br />
-            Blockchain Developer (Sui)
+            Full Stack & Web3 Developer
           </h1>
           <p className="mt-4 text-sm leading-7 text-white/58">{profileSummary.bio}</p>
         </div>
